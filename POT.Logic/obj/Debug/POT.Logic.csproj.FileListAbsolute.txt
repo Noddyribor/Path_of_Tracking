@@ -1,0 +1,9 @@
+C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\obj\Debug\POT.Logic.csprojAssemblyReference.cache
+C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\obj\Debug\POT.Logic.csproj.CoreCompileInputs.cache
+C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\bin\Debug\POT.Logic.dll
+C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\bin\Debug\POT.Logic.pdb
+C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\bin\Debug\Newtonsoft.Json.dll
+C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\bin\Debug\Newtonsoft.Json.xml
+C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\obj\Debug\POT.Logic.csproj.CopyComplete
+C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\obj\Debug\POT.Logic.dll
+C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\obj\Debug\POT.Logic.pdb

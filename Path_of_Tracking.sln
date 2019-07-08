@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POT.Logic", "POT.Logic\POT.Logic.csproj", "{8A2199E9-9A04-4B18-8548-C8299F260293}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POT.GUI", "POT.GUI\POT.GUI.csproj", "{B52FBB79-050D-4920-B3EE-C20CB4CB007F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8A2199E9-9A04-4B18-8548-C8299F260293} = {8A2199E9-9A04-4B18-8548-C8299F260293}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A2199E9-9A04-4B18-8548-C8299F260293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A2199E9-9A04-4B18-8548-C8299F260293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A2199E9-9A04-4B18-8548-C8299F260293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A2199E9-9A04-4B18-8548-C8299F260293}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B52FBB79-050D-4920-B3EE-C20CB4CB007F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B52FBB79-050D-4920-B3EE-C20CB4CB007F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B52FBB79-050D-4920-B3EE-C20CB4CB007F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B52FBB79-050D-4920-B3EE-C20CB4CB007F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {076F87EE-725B-469F-A91F-1B0B17882CFD}
+	EndGlobalSection
+EndGlobal
