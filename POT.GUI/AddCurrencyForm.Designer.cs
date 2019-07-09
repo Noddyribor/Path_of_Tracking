@@ -116,7 +116,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.typeTxtBox);
             this.Name = "AddCurrencyForm";
-            this.Text = "AddCurrencyForm";
+            this.Text = "Add Currency";
             this.ResumeLayout(false);
             this.PerformLayout();
 

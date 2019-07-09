@@ -4,150 +4,76 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
+
 
 namespace POT.Logic
 {
     public class CurrencyBank
     {
-        List<Currency> bank = new List<Currency>();
+        POTDataSet bank = new POTDataSet();
+   
 
         public CurrencyBank(CurrencyOverviewLine[] lines)
         {
+            POTDataSet.CurrencyRow row = bank.Currency.NewCurrencyRow();
+            int i=0;
             foreach (CurrencyOverviewLine line in lines)
             {
-                this.bank.Add(new Currency(line.currencyTypeName, line.chaosEquivalent));
+                row.Type = line.currencyTypeName;
+                row.ChaosValue = line.chaosEquivalent;
+                bank.Currency.Rows.InsertAt(row, i);
             }
         }
+        
 
-        public void AddCurrency(string tipo, int quantidade)
+        public void AddCurrency(int index, int quantity)
         {
-            int i = this.SearchCurrencyType(tipo);
-            if (i != -1)
-            {
-                this.bank[i].setQuantidade(this.bank[i].getQuantidade() + quantidade);
-            }
-            else
-            {
-                Console.WriteLine("Error: Type of currency doesn't exist.");
-                Console.ReadKey();
-            }
-        }
-
-        public void AddCurrency()
-        {
-            string[] opcs = { "" };
-            string tipo;
-            int quantidade;
-            Menu menu = new Menu("Add Currency", opcs, "");
-            menu.ShowTitle();
-            tipo = Terminal.ReadString("Type of currency to insert: ");
-            quantidade = Terminal.ReadInteger("Quantity to insert: ");
-            this.AddCurrency(tipo, quantidade);
+            POTDataSet.CurrencyRow row = bank.Currency.NewCurrencyRow();
+            DataView dataView = new DataView(bank.Currency);
+            POTDataSet.CurrencyRow currencyRow = (POTDataSet.CurrencyRow) bank.Currency.Rows[index];
+            row.Quantity += quantity;
+            row.ChaosValue = currencyRow.ChaosValue;
+            row.Type = currencyRow.Type;
+            bank.Currency.Rows.InsertAt(row, index);
         }
 
         public string GetTotal()
         {
             decimal total=0;
             string sTotal;
-            foreach (Currency curr in this.bank)
+            POTDataSet.CurrencyRow[] rows = (POTDataSet.CurrencyRow[]) bank.Currency.Select();
+            POTDataSet.CurrencyRow exaltedRow = (POTDataSet.CurrencyRow)bank.Currency.Rows[SearchCurrencyType("Exalted Orb")];
+            foreach (POTDataSet.CurrencyRow curr in rows)
             {
-                total += curr.getQuantidade() * curr.getChaosValue();
+                total += curr.Quantity * curr.ChaosValue;
             }
-            if(total < bank[SearchCurrencyType("Exalted Orb")].getChaosValue())
+            if(total < exaltedRow.ChaosValue)
             {
-                sTotal = total.ToString() + " chaos";
+                sTotal = total.ToString("0.##") + " chaos";
             }
             else
             {
-                sTotal = (total / bank[SearchCurrencyType("Exalted Orb")].getChaosValue()).ToString() + " exalted";
+                sTotal = (total / exaltedRow.ChaosValue).ToString("0.##") + " exalted";
             }
             return sTotal;
         }
 
-        public void RemCurrency(string tipo, int quantidade)
+        public void RemCurrency(int index, int quantity)
         {
-            int i = this.SearchCurrencyType(tipo);
-            if (i != -1)
-            {
-                this.bank[i].setQuantidade(this.bank[i].getQuantidade() - quantidade);
-            }
-            else
-            {
-                Console.WriteLine("Error: Type of currency doesn't exist.");
-                Console.ReadKey();
-            }
+            POTDataSet.CurrencyRow row = bank.Currency.NewCurrencyRow();
+            DataView dataView = new DataView(bank.Currency);
+            POTDataSet.CurrencyRow currencyRow = (POTDataSet.CurrencyRow)bank.Currency.Rows[index];
+            row.Quantity -= quantity;
+            row.ChaosValue = currencyRow.ChaosValue;
+            row.Type = currencyRow.Type;
+            bank.Currency.Rows.InsertAt(row, index);
         }
 
-        public void RemCurrency()
+        public int SearchCurrencyType(string type)
         {
-            string[] opcs = { "" };
-            string tipo;
-            int quantidade;
-            Menu menu = new Menu("Remove Currency", opcs, "");
-            menu.ShowTitle();
-            tipo = Terminal.ReadString("Type of currency to remove: ");
-            quantidade = Terminal.ReadInteger("Quantity to remove:");
-            this.RemCurrency(tipo, quantidade);
-        }
-
-        public int SearchCurrencyType(string tipo)
-        {
-            for (int i = 0; i < this.bank.Count; i++)
-            {
-                if (this.bank[i].getTipo() == tipo)
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
-
-        public string[] getCurrencyNames()
-        {
-            string[] currencyArray = new string[bank.Count];
-            int i = 0;
-            foreach (Currency curr in this.bank)
-            {
-                currencyArray[i] = curr.getTipo();
-                i++;
-            }
-            return currencyArray;
-        }
-
-        public string[] getChaosValues()
-        {
-            string[] currencyArray = new string[bank.Count];
-            int i = 0;
-            foreach (Currency curr in this.bank)
-            {
-                currencyArray[i] = curr.getChaosValue().ToString();
-                i++;
-            }
-            return currencyArray;
-        }
-
-        public string[] getQuantity() {
-            string[] currencyArray = new string[bank.Count];
-            int i = 0;
-            foreach (Currency curr in this.bank)
-            {
-                currencyArray[i] = curr.getQuantidade().ToString();
-                i++;
-            }
-            return currencyArray;
-
-        }
-
-        public string[] getChaosUnit()
-        {
-            string[] currencyArray = new string[bank.Count];
-            int i = 0;
-            foreach (Currency curr in this.bank)
-            {
-                currencyArray[i] = (curr.getQuantidade()*curr.getChaosValue()).ToString()+" chaos";
-                i++;
-            }
-            return currencyArray;
+            POTDataSet.CurrencyRow[] row = (POTDataSet.CurrencyRow[])bank.Currency.Select(string.Format("Type = {0}", type));
+            return bank.Currency.Rows.IndexOf(row[0]);
         }
     }
 }
