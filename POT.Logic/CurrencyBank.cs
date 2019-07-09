@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,31 +12,49 @@ namespace POT.Logic
 {
     public class CurrencyBank
     {
-        POTDataSet bank = new POTDataSet();
-   
-
+        POTDataSet bank;
+        
+        public CurrencyBank()
+        {
+            this.bank = new POTDataSet();
+        }
         public CurrencyBank(CurrencyOverviewLine[] lines)
         {
-            POTDataSet.CurrencyRow row = bank.Currency.NewCurrencyRow();
-            int i=0;
+            this.bank = new POTDataSet();
             foreach (CurrencyOverviewLine line in lines)
             {
+                POTDataSet.CurrencyRow row = bank.Currency.NewCurrencyRow();
+                row.Quantity = 0;
                 row.Type = line.currencyTypeName;
                 row.ChaosValue = line.chaosEquivalent;
-                bank.Currency.Rows.InsertAt(row, i);
+                if(row.Type == "Engineer's Orb")
+                {
+                    POTDataSet.CurrencyRow chaosRow = bank.Currency.NewCurrencyRow();
+                    chaosRow.Quantity = 0;
+                    chaosRow.Type = "Chaos Orb";
+                    chaosRow.ChaosValue = 1;
+                    bank.Currency.Rows.Add(chaosRow);
+                }
+                bank.Currency.Rows.Add(row);
             }
+            
+           
         }
         
+        public POTDataSet GetPOTDataSet()
+        {
+            return bank;
+        }
+        public void SetPOTDataSet(POTDataSet dataset)
+        {
+            this.bank = dataset;
+        }
 
         public void AddCurrency(int index, int quantity)
         {
-            POTDataSet.CurrencyRow row = bank.Currency.NewCurrencyRow();
-            DataView dataView = new DataView(bank.Currency);
-            POTDataSet.CurrencyRow currencyRow = (POTDataSet.CurrencyRow) bank.Currency.Rows[index];
-            row.Quantity += quantity;
-            row.ChaosValue = currencyRow.ChaosValue;
-            row.Type = currencyRow.Type;
-            bank.Currency.Rows.InsertAt(row, index);
+            POTDataSet.CurrencyRow currencyRow = (POTDataSet.CurrencyRow)bank.Currency.Rows[index];
+            int currencyQuantity = currencyRow.Quantity;
+            bank.Currency.Rows[index].SetField<int?>("Quantity", currencyQuantity + quantity);
         }
 
         public string GetTotal()
@@ -61,18 +80,12 @@ namespace POT.Logic
 
         public void RemCurrency(int index, int quantity)
         {
-            POTDataSet.CurrencyRow row = bank.Currency.NewCurrencyRow();
-            DataView dataView = new DataView(bank.Currency);
             POTDataSet.CurrencyRow currencyRow = (POTDataSet.CurrencyRow)bank.Currency.Rows[index];
-            row.Quantity -= quantity;
-            row.ChaosValue = currencyRow.ChaosValue;
-            row.Type = currencyRow.Type;
-            bank.Currency.Rows.InsertAt(row, index);
+            bank.Currency.Rows[index].SetField<int>("Quantity", currencyRow.Quantity - quantity);
         }
-
         public int SearchCurrencyType(string type)
         {
-            POTDataSet.CurrencyRow[] row = (POTDataSet.CurrencyRow[])bank.Currency.Select(string.Format("Type = {0}", type));
+            POTDataSet.CurrencyRow[] row = (POTDataSet.CurrencyRow[])bank.Currency.Select(string.Format("Type = '{0}'", type));
             return bank.Currency.Rows.IndexOf(row[0]);
         }
     }
