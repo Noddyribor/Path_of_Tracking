@@ -83,9 +83,10 @@
             // addBtn
             // 
             this.addBtn.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.addBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.addBtn.Location = new System.Drawing.Point(12, 95);
+            this.addBtn.Location = new System.Drawing.Point(12, 98);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(75, 35);
             this.addBtn.TabIndex = 6;
@@ -106,6 +107,7 @@
             // 
             // AddCurrencyForm
             // 
+            this.AcceptButton = this.addBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(301, 133);
@@ -115,7 +117,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.typeTxtBox);
+            this.Location = new System.Drawing.Point(630, 250);
             this.Name = "AddCurrencyForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Add Currency";
             this.ResumeLayout(false);
             this.PerformLayout();

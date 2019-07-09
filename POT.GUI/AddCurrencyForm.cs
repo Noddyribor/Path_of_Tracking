@@ -35,7 +35,7 @@ namespace POT.GUI
                     if(bank.SearchCurrencyType(typeTxtBox.Text) != -1)
                     {
                         if(regex.IsMatch(quantityTxtBox.Text)){
-                            bank.AddCurrency(typeTxtBox.Text, Convert.ToInt32(quantityTxtBox.Text));
+                            bank.AddCurrency(bank.SearchCurrencyType(typeTxtBox.Text), Convert.ToInt32(quantityTxtBox.Text));
                             this.Close();
                         }
                         else
@@ -65,6 +65,7 @@ namespace POT.GUI
                 typeTxtBox.Enabled = true;
                 quantityTxtBox.Enabled = true;
             }
+            
         }
     }
 }

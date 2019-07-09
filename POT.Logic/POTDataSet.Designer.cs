@@ -37,6 +37,7 @@ namespace POT.Logic {
             base.Tables.CollectionChanged += schemaChangedHandler;
             base.Relations.CollectionChanged += schemaChangedHandler;
             this.EndInit();
+            this.InitExpressions();
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -48,6 +49,9 @@ namespace POT.Logic {
                 global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
                 this.Relations.CollectionChanged += schemaChangedHandler1;
+                if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.ExcludeSchema)) {
+                    this.InitExpressions();
+                }
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
@@ -68,6 +72,7 @@ namespace POT.Logic {
             }
             else {
                 this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                this.InitExpressions();
             }
             this.GetSerializationData(info, context);
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -129,6 +134,7 @@ namespace POT.Logic {
         public override global::System.Data.DataSet Clone() {
             POTDataSet cln = ((POTDataSet)(base.Clone()));
             cln.InitVars();
+            cln.InitExpressions();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
         }
@@ -204,7 +210,7 @@ namespace POT.Logic {
             this.Namespace = "http://tempuri.org/POTDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableCurrency = new CurrencyDataTable();
+            this.tableCurrency = new CurrencyDataTable(false);
             base.Tables.Add(this.tableCurrency);
         }
         
@@ -269,6 +275,12 @@ namespace POT.Logic {
             return type;
         }
         
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitExpressions() {
+            this.Currency.TypeTotalColumn.Expression = "ChaosValue*Quantity";
+        }
+        
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void CurrencyRowChangeEventHandler(object sender, CurrencyRowChangeEvent e);
         
@@ -285,12 +297,23 @@ namespace POT.Logic {
             
             private global::System.Data.DataColumn columnQuantity;
             
+            private global::System.Data.DataColumn columnTypeTotal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CurrencyDataTable() {
+            public CurrencyDataTable() : 
+                    this(false) {
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CurrencyDataTable(bool initExpressions) {
                 this.TableName = "Currency";
                 this.BeginInit();
                 this.InitClass();
+                if ((initExpressions == true)) {
+                    this.InitExpressions();
+                }
                 this.EndInit();
             }
             
@@ -344,6 +367,14 @@ namespace POT.Logic {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TypeTotalColumn {
+                get {
+                    return this.columnTypeTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -379,12 +410,27 @@ namespace POT.Logic {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public CurrencyRow AddCurrencyRow(string Type, decimal ChaosValue, int Quantity, string TypeTotal) {
+                CurrencyRow rowCurrencyRow = ((CurrencyRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Type,
+                        ChaosValue,
+                        Quantity,
+                        TypeTotal};
+                rowCurrencyRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCurrencyRow);
+                return rowCurrencyRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CurrencyRow AddCurrencyRow(string Type, decimal ChaosValue, int Quantity) {
                 CurrencyRow rowCurrencyRow = ((CurrencyRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Type,
                         ChaosValue,
-                        Quantity};
+                        Quantity,
+                        null};
                 rowCurrencyRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCurrencyRow);
                 return rowCurrencyRow;
@@ -410,6 +456,7 @@ namespace POT.Logic {
                 this.columnType = base.Columns["Type"];
                 this.columnChaosValue = base.Columns["ChaosValue"];
                 this.columnQuantity = base.Columns["Quantity"];
+                this.columnTypeTotal = base.Columns["TypeTotal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -421,6 +468,17 @@ namespace POT.Logic {
                 base.Columns.Add(this.columnChaosValue);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
+                this.columnTypeTotal = new global::System.Data.DataColumn("TypeTotal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTypeTotal);
+                this.columnType.AllowDBNull = false;
+                this.columnType.DefaultValue = ((string)(""));
+                this.columnType.MaxLength = 50;
+                this.columnChaosValue.AllowDBNull = false;
+                this.columnChaosValue.DefaultValue = ((decimal)(0m));
+                this.columnQuantity.AllowDBNull = false;
+                this.columnQuantity.DefaultValue = ((int)(0));
+                this.columnTypeTotal.ReadOnly = true;
+                this.columnTypeTotal.DefaultValue = ((string)("0"));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -439,6 +497,12 @@ namespace POT.Logic {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(CurrencyRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitExpressions() {
+                this.TypeTotalColumn.Expression = "ChaosValue*Quantity";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -565,12 +629,7 @@ namespace POT.Logic {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Type {
                 get {
-                    try {
-                        return ((string)(this[this.tableCurrency.TypeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Type\' in table \'Currency\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableCurrency.TypeColumn]));
                 }
                 set {
                     this[this.tableCurrency.TypeColumn] = value;
@@ -581,12 +640,7 @@ namespace POT.Logic {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public decimal ChaosValue {
                 get {
-                    try {
-                        return ((decimal)(this[this.tableCurrency.ChaosValueColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ChaosValue\' in table \'Currency\' is DBNull.", e);
-                    }
+                    return ((decimal)(this[this.tableCurrency.ChaosValueColumn]));
                 }
                 set {
                     this[this.tableCurrency.ChaosValueColumn] = value;
@@ -597,12 +651,7 @@ namespace POT.Logic {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int Quantity {
                 get {
-                    try {
-                        return ((int)(this[this.tableCurrency.QuantityColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Quantity\' in table \'Currency\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tableCurrency.QuantityColumn]));
                 }
                 set {
                     this[this.tableCurrency.QuantityColumn] = value;
@@ -611,38 +660,30 @@ namespace POT.Logic {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsTypeNull() {
-                return this.IsNull(this.tableCurrency.TypeColumn);
+            public string TypeTotal {
+                get {
+                    try {
+                        return ((string)(this[this.tableCurrency.TypeTotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TypeTotal\' in table \'Currency\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCurrency.TypeTotalColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetTypeNull() {
-                this[this.tableCurrency.TypeColumn] = global::System.Convert.DBNull;
+            public bool IsTypeTotalNull() {
+                return this.IsNull(this.tableCurrency.TypeTotalColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsChaosValueNull() {
-                return this.IsNull(this.tableCurrency.ChaosValueColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetChaosValueNull() {
-                this[this.tableCurrency.ChaosValueColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsQuantityNull() {
-                return this.IsNull(this.tableCurrency.QuantityColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetQuantityNull() {
-                this[this.tableCurrency.QuantityColumn] = global::System.Convert.DBNull;
+            public void SetTypeTotalNull() {
+                this[this.tableCurrency.TypeTotalColumn] = global::System.Convert.DBNull;
             }
         }
         

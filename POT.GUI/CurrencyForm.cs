@@ -1,5 +1,6 @@
 ﻿using POT.Logic;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,37 +24,52 @@ namespace POT.GUI
 
         private async void currencyForm_Load(object sender, EventArgs e)
         {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("en");
-            CurrencyOverview ninjaCurrency;
-            
-            NinjaConnection ninjaConnect = new NinjaConnection();
-            nameTxtBox.Text = "Getting Data...";
-            ninjaCurrency = await ninjaConnect.RunAsync();
-            bank = new CurrencyBank(ninjaCurrency.lines);
-            nameTxtBox.Lines = bank.getCurrencyNames();
-            chaosValueTxtBox.Lines = bank.getChaosValues();
-            quantityTxtBox.Lines = bank.getQuantity();
-            totalUnitTxtBox.Lines = bank.getChaosUnit();
+            if (File.Exists("CurrencyData.xml"))
+            {
+                potDataSet1.ReadXml("CurrencyData.xml");
+                bank = new CurrencyBank();
+                bank.SetPOTDataSet(potDataSet1);
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo("en");
+                CurrencyOverview ninjaCurrency;
+                NinjaConnection ninjaConnect = new NinjaConnection();
+                ninjaCurrency = await ninjaConnect.RunAsync();
+                bank = new CurrencyBank(ninjaCurrency.lines);
+                potDataSet1 = bank.GetPOTDataSet();
+            }
             totalTxtBox.Text = bank.GetTotal();
-            chaosValueTxtBox.Height = (chaosValueTxtBox.Font.Height+2) * chaosValueTxtBox.Lines.Length;
-            nameTxtBox.Height = (nameTxtBox.Font.Height+2) * nameTxtBox.Lines.Length;
-            quantityTxtBox.Height = (quantityTxtBox.Font.Height + 2) * quantityTxtBox.Lines.Length;
-            totalUnitTxtBox.Height = (totalUnitTxtBox.Font.Height + 2) * totalUnitTxtBox.Lines.Length;
+            dataGridView1.Refresh();
         }
 
         private void addCurrencyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddCurrencyForm addCurrencyForm = new AddCurrencyForm(bank);
-            addCurrencyForm.ShowDialog();
+            if (addCurrencyForm.ShowDialog() == DialogResult.OK)
+            {
+                potDataSet1 = bank.GetPOTDataSet();
+                dataGridView1.Update();
+            }
+            
         }
 
-        private void refreshBtn_Click(object sender, EventArgs e)
+        private void currencyForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            ConfirmExitForm confirmExitForm = new ConfirmExitForm();
+            if(confirmExitForm.ShowDialog() == DialogResult.Yes)
+            {
+                potDataSet1.WriteXml("CurrencyData.xml");
+            }
+        }
 
-            nameTxtBox.Lines = bank.getCurrencyNames();
-            chaosValueTxtBox.Lines = bank.getChaosValues();
-            quantityTxtBox.Lines = bank.getQuantity();
-            totalUnitTxtBox.Lines = bank.getChaosUnit();
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            potDataSet1.WriteXml("CurrencyData.xml");
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
             totalTxtBox.Text = bank.GetTotal();
         }
     }

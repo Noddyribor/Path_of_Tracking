@@ -14,3 +14,5 @@ C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\bin\Debug\
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\bin\Debug\Newtonsoft.Json.xml
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.csproj.CopyComplete
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.AddCurrencyForm.resources
+C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\bin\Debug\POT.Logic.dll.config
+C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.ConfirmExitForm.resources
