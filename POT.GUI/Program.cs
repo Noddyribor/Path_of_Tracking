@@ -20,7 +20,7 @@ namespace POT.GUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en");
-            Application.Run(new MainForm()); 
+            Application.Run(new currencyForm()); 
         }
     }
 }
