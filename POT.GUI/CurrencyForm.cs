@@ -32,7 +32,6 @@ namespace POT.GUI
             }
             else
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("en");
                 CurrencyOverview ninjaCurrency;
                 NinjaConnection ninjaConnect = new NinjaConnection();
                 ninjaCurrency = await ninjaConnect.RunAsync();
@@ -41,17 +40,6 @@ namespace POT.GUI
             }
             totalTxtBox.Text = bank.GetTotal();
             dataGridView1.Refresh();
-        }
-
-        private void addCurrencyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AddCurrencyForm addCurrencyForm = new AddCurrencyForm(bank);
-            if (addCurrencyForm.ShowDialog() == DialogResult.OK)
-            {
-                potDataSet1 = bank.GetPOTDataSet();
-                dataGridView1.Update();
-            }
-            
         }
 
         private void currencyForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -71,6 +59,28 @@ namespace POT.GUI
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             totalTxtBox.Text = bank.GetTotal();
+        }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bank.ResetQuantity();
+            potDataSet1 = bank.GetPOTDataSet();
+            totalTxtBox.Text = bank.GetTotal();
+            dataGridView1.Refresh();
+        }
+
+        private async void updateChaosValuesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Action sleep = delegate() { Thread.Sleep(3000); };
+            Action msg = delegate () { msgTxtBox.Text = ""; };
+            AsyncCallback clear = delegate (IAsyncResult ar) { msgTxtBox.Invoke(msg); sleep.EndInvoke(ar); };
+            msgTxtBox.Text = "Getting data from poe.ninja...";
+            await bank.UpdateChaosValues();
+            potDataSet1 = bank.GetPOTDataSet();
+            totalTxtBox.Text = bank.GetTotal();
+            dataGridView1.Refresh();
+            msgTxtBox.Text = "Getting data from poe.ninja... Success!";
+            sleep.BeginInvoke(clear, null);
         }
     }
 }

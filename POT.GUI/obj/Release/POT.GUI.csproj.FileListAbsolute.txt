@@ -7,7 +7,6 @@ C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\bin\Releas
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\bin\Release\POT.Logic.dll.config
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\bin\Release\Newtonsoft.Json.xml
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Release\POT.GUI.csprojAssemblyReference.cache
-C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Release\POT.GUI.AddCurrencyForm.resources
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Release\POT.GUI.ConfirmExitForm.resources
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Release\POT.GUI.currencyForm.resources
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Release\POT.GUI.Properties.Resources.resources
@@ -16,3 +15,4 @@ C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Releas
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Release\POT.GUI.csproj.CopyComplete
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Release\POT.GUI.exe
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Release\POT.GUI.pdb
+C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Release\POT.GUI.MainForm.resources

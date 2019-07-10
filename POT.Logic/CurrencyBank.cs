@@ -18,6 +18,7 @@ namespace POT.Logic
         {
             this.bank = new POTDataSet();
         }
+
         public CurrencyBank(CurrencyOverviewLine[] lines)
         {
             this.bank = new POTDataSet();
@@ -36,11 +37,33 @@ namespace POT.Logic
                     bank.Currency.Rows.Add(chaosRow);
                 }
                 bank.Currency.Rows.Add(row);
-            }
-            
-           
+            } 
         }
         
+        public void ResetQuantity()
+        {
+            foreach(POTDataSet.CurrencyRow row in bank.Currency.Rows)
+            {
+                row.Quantity = 0;
+            }
+        }
+
+        public async Task UpdateChaosValues()
+        {
+            CurrencyOverview ninjaCurrency;
+            int i = 0;
+            NinjaConnection ninjaConnection = new NinjaConnection();
+            ninjaCurrency = await ninjaConnection.RunAsync();
+            foreach(POTDataSet.CurrencyRow row in bank.Currency.Rows)
+            {
+                if (row.Type != "Chaos Orb")
+                {
+                    row.ChaosValue = ninjaCurrency.lines[i].chaosEquivalent;
+                    i++;
+                }
+            }
+        }
+
         public POTDataSet GetPOTDataSet()
         {
             return bank;

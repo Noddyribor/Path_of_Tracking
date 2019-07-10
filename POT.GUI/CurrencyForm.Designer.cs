@@ -28,26 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.currencyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addCurrencyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newSaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mapStrategyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newStrategyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.calculateProfitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateChaosValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.totalTxtBox = new System.Windows.Forms.TextBox();
+            this.msgTxtBox = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.potDataSet1 = new POT.Logic.POTDataSet();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chaosValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.potDataSet1 = new POT.Logic.POTDataSet();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.potDataSet1)).BeginInit();
@@ -56,9 +51,6 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.currencyToolStripMenuItem,
-            this.salesToolStripMenuItem,
-            this.mapStrategyToolStripMenuItem,
             this.saveDataToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -67,76 +59,36 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // currencyToolStripMenuItem
-            // 
-            this.currencyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addCurrencyToolStripMenuItem});
-            this.currencyToolStripMenuItem.Name = "currencyToolStripMenuItem";
-            this.currencyToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.currencyToolStripMenuItem.Text = "Currency";
-            // 
-            // addCurrencyToolStripMenuItem
-            // 
-            this.addCurrencyToolStripMenuItem.Name = "addCurrencyToolStripMenuItem";
-            this.addCurrencyToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.addCurrencyToolStripMenuItem.Text = "Add Currency";
-            this.addCurrencyToolStripMenuItem.Click += new System.EventHandler(this.addCurrencyToolStripMenuItem_Click);
-            // 
-            // salesToolStripMenuItem
-            // 
-            this.salesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newSaleToolStripMenuItem});
-            this.salesToolStripMenuItem.Name = "salesToolStripMenuItem";
-            this.salesToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
-            this.salesToolStripMenuItem.Text = "Sales";
-            // 
-            // newSaleToolStripMenuItem
-            // 
-            this.newSaleToolStripMenuItem.Name = "newSaleToolStripMenuItem";
-            this.newSaleToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.newSaleToolStripMenuItem.Text = "New Sale";
-            // 
-            // mapStrategyToolStripMenuItem
-            // 
-            this.mapStrategyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newStrategyToolStripMenuItem,
-            this.toolStripMenuItem3,
-            this.calculateProfitToolStripMenuItem});
-            this.mapStrategyToolStripMenuItem.Name = "mapStrategyToolStripMenuItem";
-            this.mapStrategyToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
-            this.mapStrategyToolStripMenuItem.Text = "Map Strategy";
-            // 
-            // newStrategyToolStripMenuItem
-            // 
-            this.newStrategyToolStripMenuItem.Name = "newStrategyToolStripMenuItem";
-            this.newStrategyToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.newStrategyToolStripMenuItem.Text = "New Strategy";
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 6);
-            // 
-            // calculateProfitToolStripMenuItem
-            // 
-            this.calculateProfitToolStripMenuItem.Name = "calculateProfitToolStripMenuItem";
-            this.calculateProfitToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.calculateProfitToolStripMenuItem.Text = "Calculate Profit";
-            // 
             // saveDataToolStripMenuItem
             // 
             this.saveDataToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem});
+            this.saveToolStripMenuItem,
+            this.resetToolStripMenuItem,
+            this.updateChaosValuesToolStripMenuItem});
             this.saveDataToolStripMenuItem.Name = "saveDataToolStripMenuItem";
-            this.saveDataToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.saveDataToolStripMenuItem.Text = "Save Data";
+            this.saveDataToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.saveDataToolStripMenuItem.Text = "Data";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // resetToolStripMenuItem
+            // 
+            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.resetToolStripMenuItem.Text = "Reset";
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            // 
+            // updateChaosValuesToolStripMenuItem
+            // 
+            this.updateChaosValuesToolStripMenuItem.Name = "updateChaosValuesToolStripMenuItem";
+            this.updateChaosValuesToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.updateChaosValuesToolStripMenuItem.Text = "Update Chaos Values";
+            this.updateChaosValuesToolStripMenuItem.Click += new System.EventHandler(this.updateChaosValuesToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -160,6 +112,17 @@
             this.totalTxtBox.Size = new System.Drawing.Size(109, 20);
             this.totalTxtBox.TabIndex = 3;
             // 
+            // msgTxtBox
+            // 
+            this.msgTxtBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.msgTxtBox.Enabled = false;
+            this.msgTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.msgTxtBox.Location = new System.Drawing.Point(0, 687);
+            this.msgTxtBox.Name = "msgTxtBox";
+            this.msgTxtBox.ReadOnly = true;
+            this.msgTxtBox.Size = new System.Drawing.Size(1123, 22);
+            this.msgTxtBox.TabIndex = 4;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -173,14 +136,14 @@
             this.quantityDataGridViewTextBoxColumn,
             this.typeTotalDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.potDataSet1.Currency;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridView1.Location = new System.Drawing.Point(12, 24);
@@ -188,11 +151,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(728, 700);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
-            // 
-            // potDataSet1
-            // 
-            this.potDataSet1.DataSetName = "POTDataSet";
-            this.potDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // typeDataGridViewTextBoxColumn
             // 
@@ -221,12 +179,18 @@
             this.typeTotalDataGridViewTextBoxColumn.ReadOnly = true;
             this.typeTotalDataGridViewTextBoxColumn.Width = 135;
             // 
+            // potDataSet1
+            // 
+            this.potDataSet1.DataSetName = "POTDataSet";
+            this.potDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // currencyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1123, 706);
+            this.ClientSize = new System.Drawing.Size(1123, 709);
+            this.Controls.Add(this.msgTxtBox);
             this.Controls.Add(this.totalTxtBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
@@ -249,14 +213,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem currencyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newSaleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addCurrencyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mapStrategyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newStrategyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem calculateProfitToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
         private Logic.POTDataSet potDataSet1;
         private System.Windows.Forms.ToolStripMenuItem saveDataToolStripMenuItem;
@@ -267,6 +223,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn chaosValueDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeTotalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateChaosValuesToolStripMenuItem;
+        private System.Windows.Forms.TextBox msgTxtBox;
     }
 }
 

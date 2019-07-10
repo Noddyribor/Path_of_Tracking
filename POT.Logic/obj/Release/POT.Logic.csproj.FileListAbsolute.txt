@@ -7,3 +7,4 @@ C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\obj\Rele
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\obj\Release\POT.Logic.csproj.CopyComplete
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\obj\Release\POT.Logic.dll
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\obj\Release\POT.Logic.pdb
+C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.Logic\obj\Release\POT.Logic.csprojAssemblyReference.cache
