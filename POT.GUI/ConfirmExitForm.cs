@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace POT.GUI
 {
+    //Closing program confirmation box
     public partial class ConfirmExitForm : Form
     {
         public ConfirmExitForm()
@@ -17,12 +18,12 @@ namespace POT.GUI
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void saveBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void exitBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }

@@ -18,7 +18,9 @@ namespace POT.Logic
             this.client = new HttpClient();
         }
 
-        public void ShowCurrency(CurrencyOverview currency)
+
+        //never used function - keeping it just in case
+        /*public void ShowCurrency(CurrencyOverview currency)
         {
             for (int i = 0; i < currency.lines.Length; i++)
             {
@@ -27,16 +29,17 @@ namespace POT.Logic
                 Console.WriteLine($"Currency Details name: {currency.currencyDetails[i].name}");
                 Console.WriteLine(String.Empty.PadRight(79, '*'));
             }
-        }
+        }*/
 
+        //Gets the object from poe.ninja
         public async Task<CurrencyOverview> GetProductAsync(string path)
         {
             CurrencyOverview currency = null;
             HttpResponseMessage response = await client.GetAsync(path);
             if (response.IsSuccessStatusCode)
             {
-                // currency = await response.Content.ReadAsAsync<CurrencyOverview>();
                 string res = await response.Content.ReadAsStringAsync();
+                //Had a little problem with poe.ninja json containing null in some values - had to replace it
                 while (res.IndexOf("null") != -1)
                 {
                     res = res.Replace("null", "0.0");
@@ -50,6 +53,7 @@ namespace POT.Logic
             return currency;
         }
 
+        // async function that runs the whole getting data process
         public async Task<CurrencyOverview> RunAsync(string league)
         {
             client.BaseAddress = new Uri("https://poe.ninja/");
@@ -61,6 +65,7 @@ namespace POT.Logic
             {
                 currency = await GetProductAsync(chosenLeague);
             }
+            //Exception message will be later saved to a log file
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);

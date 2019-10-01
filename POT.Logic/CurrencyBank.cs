@@ -19,6 +19,7 @@ namespace POT.Logic
             this.bank = new POTDataSet();
         }
 
+        //Fills the bank with poe.ninja data
         public CurrencyBank(CurrencyOverviewLine[] lines)
         {
             this.bank = new POTDataSet();
@@ -28,6 +29,8 @@ namespace POT.Logic
                 row.Quantity = 0;
                 row.Type = line.currencyTypeName;
                 row.ChaosValue = line.chaosEquivalent;
+
+                //Adding chaos row because it's not shown at poe.ninja
                 if(row.Type == "Engineer's Orb")
                 {
                     POTDataSet.CurrencyRow chaosRow = bank.Currency.NewCurrencyRow();
@@ -36,10 +39,12 @@ namespace POT.Logic
                     chaosRow.ChaosValue = 1;
                     bank.Currency.Rows.Add(chaosRow);
                 }
+
                 bank.Currency.Rows.Add(row);
             } 
         }
         
+        //Resets all currency quantity
         public void ResetQuantity()
         {
             foreach(POTDataSet.CurrencyRow row in bank.Currency.Rows)
@@ -48,6 +53,7 @@ namespace POT.Logic
             }
         }
 
+        //Gets up-to-date currency values from poe.ninja
         public async Task UpdateChaosValues(string league)
         {
             CurrencyOverview ninjaCurrency;
@@ -56,6 +62,7 @@ namespace POT.Logic
             ninjaCurrency = await ninjaConnection.RunAsync(league);
             foreach(POTDataSet.CurrencyRow row in bank.Currency.Rows)
             {
+                //Must check for chaos orb row, poe.ninja doesn't have a row for it
                 if (row.Type != "Chaos Orb")
                 {
                     row.ChaosValue = ninjaCurrency.lines[i].chaosEquivalent;
@@ -64,6 +71,7 @@ namespace POT.Logic
             }
         }
 
+        //Dataset getters and setters
         public POTDataSet GetPOTDataSet()
         {
             return bank;
@@ -73,13 +81,16 @@ namespace POT.Logic
             this.bank = dataset;
         }
 
-        public void AddCurrency(int index, int quantity)
+        //Old function, keeping it just in case
+        /*public void AddCurrency(int index, int quantity)
         {
             POTDataSet.CurrencyRow currencyRow = (POTDataSet.CurrencyRow)bank.Currency.Rows[index];
             int currencyQuantity = currencyRow.Quantity;
             bank.Currency.Rows[index].SetField<int?>("Quantity", currencyQuantity + quantity);
-        }
+        }*/
 
+
+        //gets total currency in chaos (or exalteds if chaos quantity >= exalted chaos value)
         public string GetTotal()
         {
             decimal total=0;
@@ -101,11 +112,14 @@ namespace POT.Logic
             return sTotal;
         }
 
-        public void RemCurrency(int index, int quantity)
+        //old function, keeping it just in case
+        /*public void RemCurrency(int index, int quantity)
         {
             POTDataSet.CurrencyRow currencyRow = (POTDataSet.CurrencyRow)bank.Currency.Rows[index];
             bank.Currency.Rows[index].SetField<int>("Quantity", currencyRow.Quantity - quantity);
-        }
+        }*/
+
+        //Finds the currency type and returns the index
         public int SearchCurrencyType(string type)
         {
             POTDataSet.CurrencyRow[] row = (POTDataSet.CurrencyRow[])bank.Currency.Select(string.Format("Type = '{0}'", type));
