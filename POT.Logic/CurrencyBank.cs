@@ -48,12 +48,12 @@ namespace POT.Logic
             }
         }
 
-        public async Task UpdateChaosValues()
+        public async Task UpdateChaosValues(string league)
         {
             CurrencyOverview ninjaCurrency;
             int i = 0;
             NinjaConnection ninjaConnection = new NinjaConnection();
-            ninjaCurrency = await ninjaConnection.RunAsync();
+            ninjaCurrency = await ninjaConnection.RunAsync(league);
             foreach(POTDataSet.CurrencyRow row in bank.Currency.Rows)
             {
                 if (row.Type != "Chaos Orb")

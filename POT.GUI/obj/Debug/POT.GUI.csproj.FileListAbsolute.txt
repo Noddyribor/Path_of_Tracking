@@ -16,3 +16,20 @@ C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Debug\
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.AddCurrencyForm.resources
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\bin\Debug\POT.Logic.dll.config
 C:\Users\izeferino\Desktop\Igor Zeferino\POT\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.ConfirmExitForm.resources
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\bin\Debug\POT.GUI.exe.config
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\bin\Debug\POT.GUI.exe
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\bin\Debug\POT.GUI.pdb
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\bin\Debug\POT.Logic.dll
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\bin\Debug\Newtonsoft.Json.dll
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\bin\Debug\POT.Logic.pdb
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\bin\Debug\POT.Logic.dll.config
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\bin\Debug\Newtonsoft.Json.xml
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.csprojAssemblyReference.cache
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.ConfirmExitForm.resources
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.currencyForm.resources
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.Properties.Resources.resources
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.csproj.GenerateResource.cache
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.csproj.CoreCompileInputs.cache
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.csproj.CopyComplete
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.exe
+C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.GUI\obj\Debug\POT.GUI.pdb

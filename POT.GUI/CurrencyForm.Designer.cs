@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,12 +37,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.totalTxtBox = new System.Windows.Forms.TextBox();
             this.msgTxtBox = new System.Windows.Forms.TextBox();
+            this.leagueLabel = new System.Windows.Forms.Label();
+            this.leagueTxtBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.potDataSet1 = new POT.Logic.POTDataSet();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chaosValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.potDataSet1 = new POT.Logic.POTDataSet();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.potDataSet1)).BeginInit();
@@ -123,6 +126,45 @@
             this.msgTxtBox.Size = new System.Drawing.Size(1123, 22);
             this.msgTxtBox.TabIndex = 4;
             // 
+            // leagueLabel
+            // 
+            this.leagueLabel.AutoSize = true;
+            this.leagueLabel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.leagueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leagueLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.leagueLabel.Location = new System.Drawing.Point(746, 143);
+            this.leagueLabel.Name = "leagueLabel";
+            this.leagueLabel.Size = new System.Drawing.Size(60, 16);
+            this.leagueLabel.TabIndex = 5;
+            this.leagueLabel.Text = "League";
+            this.leagueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // leagueTxtBox
+            // 
+            this.leagueTxtBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.leagueTxtBox.Location = new System.Drawing.Point(746, 162);
+            this.leagueTxtBox.Name = "leagueTxtBox";
+            this.leagueTxtBox.Size = new System.Drawing.Size(109, 20);
+            this.leagueTxtBox.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.button1.FlatAppearance.BorderSize = 10;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(861, 162);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -136,14 +178,14 @@
             this.quantityDataGridViewTextBoxColumn,
             this.typeTotalDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.potDataSet1.Currency;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridView1.Location = new System.Drawing.Point(12, 24);
@@ -152,11 +194,17 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             // 
+            // potDataSet1
+            // 
+            this.potDataSet1.DataSetName = "POTDataSet";
+            this.potDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // typeDataGridViewTextBoxColumn
             // 
             this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
             this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
             this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
             this.typeDataGridViewTextBoxColumn.Width = 350;
             // 
             // chaosValueDataGridViewTextBoxColumn
@@ -164,6 +212,7 @@
             this.chaosValueDataGridViewTextBoxColumn.DataPropertyName = "ChaosValue";
             this.chaosValueDataGridViewTextBoxColumn.HeaderText = "ChaosValue";
             this.chaosValueDataGridViewTextBoxColumn.Name = "chaosValueDataGridViewTextBoxColumn";
+            this.chaosValueDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // quantityDataGridViewTextBoxColumn
             // 
@@ -179,17 +228,15 @@
             this.typeTotalDataGridViewTextBoxColumn.ReadOnly = true;
             this.typeTotalDataGridViewTextBoxColumn.Width = 135;
             // 
-            // potDataSet1
-            // 
-            this.potDataSet1.DataSetName = "POTDataSet";
-            this.potDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // currencyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1123, 709);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.leagueTxtBox);
+            this.Controls.Add(this.leagueLabel);
             this.Controls.Add(this.msgTxtBox);
             this.Controls.Add(this.totalTxtBox);
             this.Controls.Add(this.label1);
@@ -219,13 +266,16 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox totalTxtBox;
+        private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateChaosValuesToolStripMenuItem;
+        private System.Windows.Forms.TextBox msgTxtBox;
+        private System.Windows.Forms.Label leagueLabel;
+        private System.Windows.Forms.TextBox leagueTxtBox;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn chaosValueDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeTotalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem updateChaosValuesToolStripMenuItem;
-        private System.Windows.Forms.TextBox msgTxtBox;
     }
 }
 

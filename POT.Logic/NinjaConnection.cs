@@ -50,15 +50,16 @@ namespace POT.Logic
             return currency;
         }
 
-        public async Task<CurrencyOverview> RunAsync()
+        public async Task<CurrencyOverview> RunAsync(string league)
         {
             client.BaseAddress = new Uri("https://poe.ninja/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             CurrencyOverview currency = new CurrencyOverview();
+            string chosenLeague = "api/data/currencyoverview?league=" + league + "&type=Currency";
             try
             {
-                currency = await GetProductAsync("api/data/currencyoverview?league=Legion&type=Currency");
+                currency = await GetProductAsync(chosenLeague);
             }
             catch (Exception e)
             {
