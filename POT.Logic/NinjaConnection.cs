@@ -20,7 +20,7 @@ namespace POT.Logic
 
 
         //never used function - keeping it just in case
-        /*public void ShowCurrency(CurrencyOverview currency)
+        public void ShowCurrency(CurrencyOverview currency)
         {
             for (int i = 0; i < currency.lines.Length; i++)
             {
@@ -29,7 +29,7 @@ namespace POT.Logic
                 Console.WriteLine($"Currency Details name: {currency.currencyDetails[i].name}");
                 Console.WriteLine(String.Empty.PadRight(79, '*'));
             }
-        }*/
+        }
 
         //Gets the object from poe.ninja
         public async Task<CurrencyOverview> GetProductAsync(string path)
@@ -66,9 +66,9 @@ namespace POT.Logic
                 currency = await GetProductAsync(chosenLeague);
             }
             //Exception message will be later saved to a log file
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                
             }
             return currency;
         }

@@ -12,7 +12,7 @@ namespace POT.Logic
 {
     public class CurrencyBank
     {
-        POTDataSet bank;
+        private POTDataSet bank;
         
         public CurrencyBank()
         {

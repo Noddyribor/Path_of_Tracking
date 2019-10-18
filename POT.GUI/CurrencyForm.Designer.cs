@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,7 +38,6 @@
             this.totalTxtBox = new System.Windows.Forms.TextBox();
             this.msgTxtBox = new System.Windows.Forms.TextBox();
             this.leagueLabel = new System.Windows.Forms.Label();
-            this.leagueTxtBox = new System.Windows.Forms.TextBox();
             this.leagueSaveBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +45,7 @@
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.potDataSet1 = new POT.Logic.POTDataSet();
+            this.leaguesBox = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.potDataSet1)).BeginInit();
@@ -139,14 +139,6 @@
             this.leagueLabel.Text = "League";
             this.leagueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // leagueTxtBox
-            // 
-            this.leagueTxtBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.leagueTxtBox.Location = new System.Drawing.Point(746, 162);
-            this.leagueTxtBox.Name = "leagueTxtBox";
-            this.leagueTxtBox.Size = new System.Drawing.Size(109, 20);
-            this.leagueTxtBox.TabIndex = 6;
-            // 
             // leagueSaveBtn
             // 
             this.leagueSaveBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -163,7 +155,7 @@
             this.leagueSaveBtn.TabIndex = 7;
             this.leagueSaveBtn.Text = "Save";
             this.leagueSaveBtn.UseVisualStyleBackColor = false;
-            this.leagueSaveBtn.Click += new System.EventHandler(this.leagueSaveButton_Click);
+            this.leagueSaveBtn.Click += new System.EventHandler(this.leagueSaveButton_ClickAsync);
             // 
             // dataGridView1
             // 
@@ -178,14 +170,14 @@
             this.quantityDataGridViewTextBoxColumn,
             this.typeTotalDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.potDataSet1.Currency;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridView1.Location = new System.Drawing.Point(12, 24);
@@ -228,14 +220,25 @@
             this.potDataSet1.DataSetName = "POTDataSet";
             this.potDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // leaguesBox
+            // 
+            this.leaguesBox.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", global::POT.GUI.Properties.Settings.Default, "lastLeague", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.leaguesBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.leaguesBox.FormattingEnabled = true;
+            this.leaguesBox.Location = new System.Drawing.Point(746, 164);
+            this.leaguesBox.Name = "leaguesBox";
+            this.leaguesBox.Size = new System.Drawing.Size(109, 21);
+            this.leaguesBox.TabIndex = 8;
+            this.leaguesBox.ValueMember = global::POT.GUI.Properties.Settings.Default.lastLeague;
+            // 
             // currencyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1123, 709);
+            this.Controls.Add(this.leaguesBox);
             this.Controls.Add(this.leagueSaveBtn);
-            this.Controls.Add(this.leagueTxtBox);
             this.Controls.Add(this.leagueLabel);
             this.Controls.Add(this.msgTxtBox);
             this.Controls.Add(this.totalTxtBox);
@@ -270,12 +273,12 @@
         private System.Windows.Forms.ToolStripMenuItem updateChaosValuesToolStripMenuItem;
         private System.Windows.Forms.TextBox msgTxtBox;
         private System.Windows.Forms.Label leagueLabel;
-        private System.Windows.Forms.TextBox leagueTxtBox;
         private System.Windows.Forms.Button leagueSaveBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn chaosValueDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeTotalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ComboBox leaguesBox;
     }
 }
 

@@ -65,7 +65,10 @@
     <Compile Include="CurrencyDetails.cs" />
     <Compile Include="CurrencyOverview.cs" />
     <Compile Include="CurrencyOverviewLine.cs" />
+    <Compile Include="League.cs" />
+    <Compile Include="Leagues.cs" />
     <Compile Include="NinjaConnection.cs" />
+    <Compile Include="PoeConnection.cs" />
     <Compile Include="POTDataSet.cs">
       <DependentUpon>POTDataSet.xsd</DependentUpon>
     </Compile>

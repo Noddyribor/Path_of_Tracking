@@ -17,7 +17,8 @@ namespace POT.GUI
     public partial class currencyForm : Form
     {
         private CurrencyBank bank;
-        private string league = "Standard";
+        private League[] leagues;
+        private string league;
         public currencyForm()
         {
             InitializeComponent();
@@ -25,6 +26,36 @@ namespace POT.GUI
 
         private async void currencyForm_Load(object sender, EventArgs e)
         {
+            bool leagueValid;
+
+            //Loads data into league list
+            PoeConnection poeConnect = new PoeConnection();
+            leagues = await poeConnect.RunAsyncLeagues();
+            Console.WriteLine(leagues);
+            league = Properties.Settings.Default.lastLeague;
+
+
+            foreach (League item in leagues)
+            {
+                if (item.id.Equals(league))
+                {
+                    leaguesBox.Text = league;
+                    leagueValid = true;
+                    break;
+                }
+            }
+            leagueValid =  false;
+
+
+            
+            if (!leagueValid)
+            {
+                leaguesBox.Text = "Standard";
+                leagueSaveBtn.PerformClick();
+            }
+
+
+
             //Loads data into bank from xml if exists
             if (File.Exists("CurrencyData.xml"))
             {
@@ -39,10 +70,11 @@ namespace POT.GUI
                 NinjaConnection ninjaConnect = new NinjaConnection();
                 ninjaCurrency = await ninjaConnect.RunAsync(league);
                 bank = new CurrencyBank(ninjaCurrency.lines);
-                potDataSet1 = bank.GetPOTDataSet();
+                potDataSet1.Clear();
+                potDataSet1.Merge(bank.GetPOTDataSet());
             }
+
             totalTxtBox.Text = bank.GetTotal();
-            leagueTxtBox.Text = league;
             dataGridView1.Refresh();
         }
 
@@ -74,7 +106,8 @@ namespace POT.GUI
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bank.ResetQuantity();
-            potDataSet1 = bank.GetPOTDataSet();
+            potDataSet1.Clear();
+            potDataSet1.Merge(bank.GetPOTDataSet());
             totalTxtBox.Text = bank.GetTotal();
             dataGridView1.Refresh();
         }
@@ -90,25 +123,45 @@ namespace POT.GUI
             {
                 //gets up-to-date values from poe.ninja
                 await bank.UpdateChaosValues(league);
-                potDataSet1 = bank.GetPOTDataSet();
+                potDataSet1.Clear();
+                potDataSet1.Merge(bank.GetPOTDataSet());
                 totalTxtBox.Text = bank.GetTotal();
                 dataGridView1.Refresh();
                 msgTxtBox.Text = "Getting data from poe.ninja... Success!";
             
             //exception message will be later saved to log file
             }catch(Exception ex)
-            {
-                msgTxtBox.Text = "Error getting data, check league spelling.";
+            {  
             }
             sleep.BeginInvoke(clear, null);
         }
 
         // League save button event handler
-        private void leagueSaveButton_Click(object sender, EventArgs e)
+        private async void leagueSaveButton_ClickAsync(object sender, EventArgs e)
         {
-            // sets the new league to be used by updateChaosValues - variable will probably be removed later - can use direct value from box
-            league = leagueTxtBox.Text;
-            updateChaosValuesToolStripMenuItem.PerformClick();
+            //get data for the selected league
+            Action sleep = delegate () { Thread.Sleep(3000); };
+            Action msg = delegate () { msgTxtBox.Text = ""; };
+            AsyncCallback clear = delegate (IAsyncResult ar) { msgTxtBox.Invoke(msg); sleep.EndInvoke(ar); };
+            msgTxtBox.Text = "Getting data from poe.ninja...";
+            try
+            {
+                league = leaguesBox.Text;
+                CurrencyOverview ninjaCurrency;
+                NinjaConnection ninjaConnect = new NinjaConnection();
+                ninjaCurrency = await ninjaConnect.RunAsync(league);
+                bank = new CurrencyBank(ninjaCurrency.lines);
+                potDataSet1.Clear();
+                potDataSet1.Merge(bank.GetPOTDataSet());
+                totalTxtBox.Text = bank.GetTotal();
+                dataGridView1.Refresh();
+                msgTxtBox.Text = "Getting data from poe.ninja... Success!";
+            }
+            catch (Exception ex)
+            {
+
+            }
+            sleep.BeginInvoke(clear, null);
         }
     }
 }
