@@ -38,7 +38,6 @@
             this.totalTxtBox = new System.Windows.Forms.TextBox();
             this.msgTxtBox = new System.Windows.Forms.TextBox();
             this.leagueLabel = new System.Windows.Forms.Label();
-            this.leagueSaveBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chaosValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -120,7 +119,7 @@
             this.msgTxtBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.msgTxtBox.Enabled = false;
             this.msgTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.msgTxtBox.Location = new System.Drawing.Point(0, 687);
+            this.msgTxtBox.Location = new System.Drawing.Point(0, 721);
             this.msgTxtBox.Name = "msgTxtBox";
             this.msgTxtBox.ReadOnly = true;
             this.msgTxtBox.Size = new System.Drawing.Size(1123, 22);
@@ -138,24 +137,6 @@
             this.leagueLabel.TabIndex = 5;
             this.leagueLabel.Text = "League";
             this.leagueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // leagueSaveBtn
-            // 
-            this.leagueSaveBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.leagueSaveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.leagueSaveBtn.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.leagueSaveBtn.FlatAppearance.BorderSize = 10;
-            this.leagueSaveBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this.leagueSaveBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow;
-            this.leagueSaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.leagueSaveBtn.ForeColor = System.Drawing.Color.Black;
-            this.leagueSaveBtn.Location = new System.Drawing.Point(861, 162);
-            this.leagueSaveBtn.Name = "leagueSaveBtn";
-            this.leagueSaveBtn.Size = new System.Drawing.Size(75, 23);
-            this.leagueSaveBtn.TabIndex = 7;
-            this.leagueSaveBtn.Text = "Save";
-            this.leagueSaveBtn.UseVisualStyleBackColor = false;
-            this.leagueSaveBtn.Click += new System.EventHandler(this.leagueSaveButton_ClickAsync);
             // 
             // dataGridView1
             // 
@@ -182,6 +163,8 @@
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridView1.Location = new System.Drawing.Point(12, 24);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.Size = new System.Drawing.Size(728, 700);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
@@ -223,6 +206,7 @@
             // leaguesBox
             // 
             this.leaguesBox.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", global::POT.GUI.Properties.Settings.Default, "lastLeague", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.leaguesBox.DisplayMember = "Standard";
             this.leaguesBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.leaguesBox.FormattingEnabled = true;
             this.leaguesBox.Location = new System.Drawing.Point(746, 164);
@@ -230,15 +214,15 @@
             this.leaguesBox.Size = new System.Drawing.Size(109, 21);
             this.leaguesBox.TabIndex = 8;
             this.leaguesBox.ValueMember = global::POT.GUI.Properties.Settings.Default.lastLeague;
+            this.leaguesBox.SelectedIndexChanged += new System.EventHandler(this.leaguesBox_SelectedIndexChangedAsync);
             // 
             // currencyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1123, 709);
+            this.ClientSize = new System.Drawing.Size(1123, 743);
             this.Controls.Add(this.leaguesBox);
-            this.Controls.Add(this.leagueSaveBtn);
             this.Controls.Add(this.leagueLabel);
             this.Controls.Add(this.msgTxtBox);
             this.Controls.Add(this.totalTxtBox);
@@ -273,7 +257,6 @@
         private System.Windows.Forms.ToolStripMenuItem updateChaosValuesToolStripMenuItem;
         private System.Windows.Forms.TextBox msgTxtBox;
         private System.Windows.Forms.Label leagueLabel;
-        private System.Windows.Forms.Button leagueSaveBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn chaosValueDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;

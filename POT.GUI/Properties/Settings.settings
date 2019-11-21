@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="lastLeague" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Standard</Value>
     </Setting>
   </Settings>
 </SettingsFile>

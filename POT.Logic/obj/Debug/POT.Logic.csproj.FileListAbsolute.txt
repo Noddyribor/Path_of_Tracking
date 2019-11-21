@@ -18,3 +18,12 @@ C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.Logic\obj
 C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.Logic\obj\Debug\POT.Logic.csproj.CopyComplete
 C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.Logic\obj\Debug\POT.Logic.dll
 C:\Users\izeferino\Desktop\Stuff\Path of Tracking\Path_of_Tracking\POT.Logic\obj\Debug\POT.Logic.pdb
+C:\Users\INM\Desktop\POT\POT.Logic\bin\Debug\POT.Logic.dll.config
+C:\Users\INM\Desktop\POT\POT.Logic\bin\Debug\POT.Logic.dll
+C:\Users\INM\Desktop\POT\POT.Logic\bin\Debug\POT.Logic.pdb
+C:\Users\INM\Desktop\POT\POT.Logic\bin\Debug\Newtonsoft.Json.dll
+C:\Users\INM\Desktop\POT\POT.Logic\bin\Debug\Newtonsoft.Json.xml
+C:\Users\INM\Desktop\POT\POT.Logic\obj\Debug\POT.Logic.csprojAssemblyReference.cache
+C:\Users\INM\Desktop\POT\POT.Logic\obj\Debug\POT.Logic.csproj.CopyComplete
+C:\Users\INM\Desktop\POT\POT.Logic\obj\Debug\POT.Logic.dll
+C:\Users\INM\Desktop\POT\POT.Logic\obj\Debug\POT.Logic.pdb

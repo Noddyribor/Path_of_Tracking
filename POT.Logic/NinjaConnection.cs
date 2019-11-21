@@ -40,14 +40,14 @@ namespace POT.Logic
             {
                 string res = await response.Content.ReadAsStringAsync();
                 //Had a little problem with poe.ninja json containing null in some values - had to replace it
-                while (res.IndexOf("null") != -1)
+                /*while (res.IndexOf("null") != -1)
                 {
                     res = res.Replace("null", "0.0");
                 }
                 while (res.IndexOf("\"pay\":0.0") != -1)
                 {
                     res = res.Replace("\"pay\":0.0", "\"pay\":null");
-                }
+                }*/
                 currency = JsonConvert.DeserializeObject<CurrencyOverview>(res);
             }
             return currency;
@@ -60,7 +60,9 @@ namespace POT.Logic
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             CurrencyOverview currency = new CurrencyOverview();
+            league = Uri.EscapeDataString(league);
             string chosenLeague = "api/data/currencyoverview?league=" + league + "&type=Currency";
+            Console.WriteLine(chosenLeague);
             try
             {
                 currency = await GetProductAsync(chosenLeague);
@@ -68,7 +70,7 @@ namespace POT.Logic
             //Exception message will be later saved to a log file
             catch (Exception ex)
             {
-                
+                Console.WriteLine(ex.Message);
             }
             return currency;
         }

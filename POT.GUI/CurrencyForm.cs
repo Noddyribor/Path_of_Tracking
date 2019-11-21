@@ -17,7 +17,6 @@ namespace POT.GUI
     public partial class currencyForm : Form
     {
         private CurrencyBank bank;
-        private League[] leagues;
         private string league;
         public currencyForm()
         {
@@ -26,33 +25,21 @@ namespace POT.GUI
 
         private async void currencyForm_Load(object sender, EventArgs e)
         {
-            bool leagueValid;
+            Leagues leagues = new Leagues();
+            List<PoeLeague> poeLeagues;
+            PoeConnection poeConnect = new PoeConnection();
 
             //Loads data into league list
-            PoeConnection poeConnect = new PoeConnection();
-            leagues = await poeConnect.RunAsyncLeagues();
-            Console.WriteLine(leagues);
+            poeLeagues = await poeConnect.RunAsyncLeagues();
+            leagues.setLeagues(poeLeagues);
             league = Properties.Settings.Default.lastLeague;
-
-
-            foreach (League item in leagues)
+            leaguesBox.DataSource = leagues.getLeagues();
+            // if saved league is no longer available, sets it to standard
+            if (!leagues.IsLeagueAvailable(league))
             {
-                if (item.id.Equals(league))
-                {
-                    leaguesBox.Text = league;
-                    leagueValid = true;
-                    break;
-                }
+                league = "Standard";
             }
-            leagueValid =  false;
-
-
-            
-            if (!leagueValid)
-            {
-                leaguesBox.Text = "Standard";
-                leagueSaveBtn.PerformClick();
-            }
+            leaguesBox.SelectedIndex = leaguesBox.Items.IndexOf(league);
 
 
 
@@ -83,10 +70,12 @@ namespace POT.GUI
         {
             ConfirmExitForm confirmExitForm = new ConfirmExitForm();
 
-            //Saves the xml before closing if user wants to
+            //Saves the xml and league setting before closing if the user wants to
             if(confirmExitForm.ShowDialog() == DialogResult.Yes)
             {
                 potDataSet1.WriteXml("CurrencyData.xml");
+                Properties.Settings.Default.lastLeague = leaguesBox.SelectedItem.ToString();
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -131,13 +120,14 @@ namespace POT.GUI
             
             //exception message will be later saved to log file
             }catch(Exception ex)
-            {  
+            {
+                Console.WriteLine(ex.Message);
             }
             sleep.BeginInvoke(clear, null);
         }
 
-        // League save button event handler
-        private async void leagueSaveButton_ClickAsync(object sender, EventArgs e)
+        //league change event handler
+        private async void leaguesBox_SelectedIndexChangedAsync(object sender, EventArgs e)
         {
             //get data for the selected league
             Action sleep = delegate () { Thread.Sleep(3000); };
@@ -159,7 +149,7 @@ namespace POT.GUI
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
             sleep.BeginInvoke(clear, null);
         }

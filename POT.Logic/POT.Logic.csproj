@@ -65,7 +65,7 @@
     <Compile Include="CurrencyDetails.cs" />
     <Compile Include="CurrencyOverview.cs" />
     <Compile Include="CurrencyOverviewLine.cs" />
-    <Compile Include="League.cs" />
+    <Compile Include="PoeLeague.cs" />
     <Compile Include="Leagues.cs" />
     <Compile Include="NinjaConnection.cs" />
     <Compile Include="PoeConnection.cs" />

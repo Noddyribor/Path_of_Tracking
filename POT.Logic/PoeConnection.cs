@@ -18,33 +18,32 @@ namespace POT.Logic
             this.client = new HttpClient();
         }
 
-        public async Task<League[]> GetLeaguesAsync()
+        public async Task<List<PoeLeague>> GetLeaguesAsync()
         {
-            League[] list = null;
+            List<PoeLeague> list = new List<PoeLeague>();
             HttpResponseMessage response = await client.GetAsync("leagues?type=main&compact=1");
             if (response.IsSuccessStatusCode)
             {
                 string res = await response.Content.ReadAsStringAsync();
-                list = JsonConvert.DeserializeObject<League[]>(res);
-               
+                Console.WriteLine(res);
+                list = JsonConvert.DeserializeObject<List<PoeLeague>>(res);
             }
             return list;
         }
 
-        public async Task<League[]> RunAsyncLeagues()
+        public async Task<List<PoeLeague>> RunAsyncLeagues()
         {
             client.BaseAddress = new Uri("http://api.pathofexile.com/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            League[] list = null;
+            List<PoeLeague> list = null;
             try
             {
-                list = await GetLeaguesAsync();
-                
+                list = await GetLeaguesAsync(); 
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
             return list;
         }

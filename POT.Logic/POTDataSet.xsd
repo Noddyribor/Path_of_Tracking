@@ -14,7 +14,7 @@
   <xs:element name="POTDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="POTDataSet" msprop:Generator_UserDSName="POTDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Currency" msprop:Generator_TableClassName="CurrencyDataTable" msprop:Generator_TableVarName="tableCurrency" msprop:Generator_RowChangedName="CurrencyRowChanged" msprop:Generator_TablePropName="Currency" msprop:Generator_RowDeletingName="CurrencyRowDeleting" msprop:Generator_RowChangingName="CurrencyRowChanging" msprop:Generator_RowEvHandlerName="CurrencyRowChangeEventHandler" msprop:Generator_RowDeletedName="CurrencyRowDeleted" msprop:Generator_RowClassName="CurrencyRow" msprop:Generator_UserTableName="Currency" msprop:Generator_RowEvArgName="CurrencyRowChangeEvent">
+        <xs:element name="Currency" msprop:Generator_TableClassName="CurrencyDataTable" msprop:Generator_TableVarName="tableCurrency" msprop:Generator_TablePropName="Currency" msprop:Generator_RowDeletingName="CurrencyRowDeleting" msprop:Generator_RowChangingName="CurrencyRowChanging" msprop:Generator_RowEvHandlerName="CurrencyRowChangeEventHandler" msprop:Generator_RowDeletedName="CurrencyRowDeleted" msprop:Generator_UserTableName="Currency" msprop:Generator_RowChangedName="CurrencyRowChanged" msprop:Generator_RowEvArgName="CurrencyRowChangeEvent" msprop:Generator_RowClassName="CurrencyRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Type" msprop:nullValue="_empty" msprop:Generator_ColumnPropNameInRow="Type" msprop:Generator_ColumnVarNameInTable="columnType" msprop:Generator_ColumnPropNameInTable="TypeColumn" msprop:Generator_UserColumnName="Type" default="">
@@ -24,8 +24,8 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ChaosValue" msprop:Generator_ColumnVarNameInTable="columnChaosValue" msprop:Generator_ColumnPropNameInRow="ChaosValue" msprop:Generator_ColumnPropNameInTable="ChaosValueColumn" msprop:Generator_UserColumnName="ChaosValue" type="xs:decimal" default="0" />
-              <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:int" default="0" />
+              <xs:element name="ChaosValue" msprop:Generator_ColumnVarNameInTable="columnChaosValue" msprop:Generator_ColumnPropNameInRow="ChaosValue" msprop:Generator_ColumnPropNameInTable="ChaosValueColumn" msprop:Generator_UserColumnName="ChaosValue" type="xs:decimal" default="0" minOccurs="0" />
+              <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:int" default="0" minOccurs="0" />
               <xs:element name="TypeTotal" msdata:ReadOnly="true" msdata:Expression="ChaosValue*Quantity" msprop:Generator_ColumnVarNameInTable="columnTypeTotal" msprop:Generator_ColumnPropNameInRow="TypeTotal" msprop:Generator_ColumnPropNameInTable="TypeTotalColumn" msprop:Generator_UserColumnName="TypeTotal" type="xs:string" default="0" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>

@@ -8,18 +8,33 @@ namespace POT.Logic
 {
     public class Leagues
     {
-        public League[] list { get; set; }
+        public List<string> list { get; set; }
 
         public bool IsLeagueAvailable(string league)
         {
-            foreach(League item in list)
+            foreach(string item in list)
             {
-                if(item.id.Equals(league))
+                if(item.Equals(league))
                 {
                     return true;
                 }
             }
             return false;
+        }
+
+        public void setLeagues(List<PoeLeague> list)
+        {
+            this.list = new List<string>();
+            foreach (PoeLeague item in list)
+            {
+                if (item.id.Contains("SSF")) continue;
+                this.list.Add(item.id);
+            }
+        }
+
+        public List<string> getLeagues()
+        {
+            return this.list;
         }
     }
 }

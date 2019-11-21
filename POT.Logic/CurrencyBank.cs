@@ -36,7 +36,7 @@ namespace POT.Logic
                     POTDataSet.CurrencyRow chaosRow = bank.Currency.NewCurrencyRow();
                     chaosRow.Quantity = 0;
                     chaosRow.Type = "Chaos Orb";
-                    chaosRow.ChaosValue = 1;
+                    chaosRow.ChaosValue = 1.00M;
                     bank.Currency.Rows.Add(chaosRow);
                 }
 
