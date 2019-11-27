@@ -2,55 +2,61 @@
 <POTDataSet xmlns="http://tempuri.org/POTDataSet.xsd">
   <Currency>
     <Type>Mirror of Kalandra</Type>
-    <ChaosValue>41676.36</ChaosValue>
+    <ChaosValue>41440.06</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Mirror Shard</Type>
-    <ChaosValue>2020.54</ChaosValue>
+    <ChaosValue>1915.21</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Exalted Orb</Type>
-    <ChaosValue>158.38</ChaosValue>
+    <ChaosValue>158.55</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Blessing of Chayula</Type>
-    <ChaosValue>54.94</ChaosValue>
+    <ChaosValue>67.27</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Ancient Orb</Type>
-    <ChaosValue>36.69</ChaosValue>
+    <ChaosValue>33.94</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Divine Orb</Type>
-    <ChaosValue>22.62</ChaosValue>
+    <ChaosValue>22.50</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Orb of Annulment</Type>
-    <ChaosValue>21.01</ChaosValue>
+    <ChaosValue>20.99</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Harbinger's Orb</Type>
-    <ChaosValue>14.87</ChaosValue>
+    <ChaosValue>14.38</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Exalted Shard</Type>
-    <ChaosValue>7.75</ChaosValue>
+    <ChaosValue>7.53</ChaosValue>
+    <Quantity>0</Quantity>
+    <TypeTotal>0.00</TypeTotal>
+  </Currency>
+  <Currency>
+    <Type>Blessing of Uul-Netol</Type>
+    <ChaosValue>4.45</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
@@ -61,26 +67,14 @@
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
-    <Type>Blessing of Uul-Netol</Type>
-    <ChaosValue>3.91</ChaosValue>
-    <Quantity>0</Quantity>
-    <TypeTotal>0.00</TypeTotal>
-  </Currency>
-  <Currency>
-    <Type>Blessing of Esh</Type>
-    <ChaosValue>2.88</ChaosValue>
+    <Type>Splinter of Chayula</Type>
+    <ChaosValue>2.29</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Master Cartographer's Sextant</Type>
-    <ChaosValue>2.33</ChaosValue>
-    <Quantity>0</Quantity>
-    <TypeTotal>0.00</TypeTotal>
-  </Currency>
-  <Currency>
-    <Type>Splinter of Chayula</Type>
-    <ChaosValue>2.29</ChaosValue>
+    <ChaosValue>2.10</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
@@ -91,20 +85,26 @@
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
+    <Type>Blessing of Tul</Type>
+    <ChaosValue>2.00</ChaosValue>
+    <Quantity>0</Quantity>
+    <TypeTotal>0.00</TypeTotal>
+  </Currency>
+  <Currency>
+    <Type>Blessing of Esh</Type>
+    <ChaosValue>2.00</ChaosValue>
+    <Quantity>0</Quantity>
+    <TypeTotal>0.00</TypeTotal>
+  </Currency>
+  <Currency>
     <Type>Journeyman Cartographer's Sextant</Type>
-    <ChaosValue>1.50</ChaosValue>
+    <ChaosValue>1.39</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Gemcutter's Prism</Type>
-    <ChaosValue>1.10</ChaosValue>
-    <Quantity>0</Quantity>
-    <TypeTotal>0.00</TypeTotal>
-  </Currency>
-  <Currency>
-    <Type>Blessing of Tul</Type>
-    <ChaosValue>1.00</ChaosValue>
+    <ChaosValue>1.05</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
@@ -116,37 +116,49 @@
   </Currency>
   <Currency>
     <Type>Vaal Orb</Type>
-    <ChaosValue>0.95</ChaosValue>
-    <Quantity>0</Quantity>
-    <TypeTotal>0.00</TypeTotal>
-  </Currency>
-  <Currency>
-    <Type>Apprentice Cartographer's Sextant</Type>
-    <ChaosValue>0.83</ChaosValue>
+    <ChaosValue>0.92</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Orb of Regret</Type>
-    <ChaosValue>0.77</ChaosValue>
+    <ChaosValue>0.75</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
-    <Type>Cartographer's Chisel</Type>
-    <ChaosValue>0.54</ChaosValue>
+    <Type>Apprentice Cartographer's Sextant</Type>
+    <ChaosValue>0.75</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Orb of Scouring</Type>
-    <ChaosValue>0.54</ChaosValue>
+    <ChaosValue>0.53</ChaosValue>
+    <Quantity>0</Quantity>
+    <TypeTotal>0.00</TypeTotal>
+  </Currency>
+  <Currency>
+    <Type>Cartographer's Chisel</Type>
+    <ChaosValue>0.51</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Splinter of Uul-Netol</Type>
     <ChaosValue>0.50</ChaosValue>
+    <Quantity>0</Quantity>
+    <TypeTotal>0.00</TypeTotal>
+  </Currency>
+  <Currency>
+    <Type>Orb of Fusing</Type>
+    <ChaosValue>0.42</ChaosValue>
+    <Quantity>0</Quantity>
+    <TypeTotal>0.00</TypeTotal>
+  </Currency>
+  <Currency>
+    <Type>Orb of Horizons</Type>
+    <ChaosValue>0.37</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
@@ -158,31 +170,19 @@
   </Currency>
   <Currency>
     <Type>Engineer's Orb</Type>
-    <ChaosValue>0.45</ChaosValue>
-    <Quantity>0</Quantity>
-    <TypeTotal>0.00</TypeTotal>
-  </Currency>
-  <Currency>
-    <Type>Orb of Fusing</Type>
-    <ChaosValue>0.43</ChaosValue>
-    <Quantity>0</Quantity>
-    <TypeTotal>0.00</TypeTotal>
-  </Currency>
-  <Currency>
-    <Type>Orb of Horizons</Type>
-    <ChaosValue>0.39</ChaosValue>
-    <Quantity>0</Quantity>
-    <TypeTotal>0.00</TypeTotal>
-  </Currency>
-  <Currency>
-    <Type>Silver Coin</Type>
-    <ChaosValue>0.28</ChaosValue>
+    <ChaosValue>0.29</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Regal Orb</Type>
-    <ChaosValue>0.27</ChaosValue>
+    <ChaosValue>0.28</ChaosValue>
+    <Quantity>0</Quantity>
+    <TypeTotal>0.00</TypeTotal>
+  </Currency>
+  <Currency>
+    <Type>Silver Coin</Type>
+    <ChaosValue>0.26</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
@@ -193,26 +193,26 @@
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
-    <Type>Splinter of Tul</Type>
-    <ChaosValue>0.19</ChaosValue>
-    <Quantity>0</Quantity>
-    <TypeTotal>0.00</TypeTotal>
-  </Currency>
-  <Currency>
     <Type>Splinter of Xoph</Type>
-    <ChaosValue>0.18</ChaosValue>
-    <Quantity>0</Quantity>
-    <TypeTotal>0.00</TypeTotal>
-  </Currency>
-  <Currency>
-    <Type>Orb of Binding</Type>
-    <ChaosValue>0.18</ChaosValue>
+    <ChaosValue>0.17</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Splinter of Esh</Type>
     <ChaosValue>0.17</ChaosValue>
+    <Quantity>0</Quantity>
+    <TypeTotal>0.00</TypeTotal>
+  </Currency>
+  <Currency>
+    <Type>Orb of Binding</Type>
+    <ChaosValue>0.17</ChaosValue>
+    <Quantity>0</Quantity>
+    <TypeTotal>0.00</TypeTotal>
+  </Currency>
+  <Currency>
+    <Type>Splinter of Tul</Type>
+    <ChaosValue>0.16</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
@@ -230,13 +230,13 @@
   </Currency>
   <Currency>
     <Type>Glassblower's Bauble</Type>
-    <ChaosValue>0.15</ChaosValue>
+    <ChaosValue>0.14</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Orb of Chance</Type>
-    <ChaosValue>0.14</ChaosValue>
+    <ChaosValue>0.13</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
@@ -248,18 +248,18 @@
   </Currency>
   <Currency>
     <Type>Blessed Orb</Type>
+    <ChaosValue>0.07</ChaosValue>
+    <Quantity>0</Quantity>
+    <TypeTotal>0.00</TypeTotal>
+  </Currency>
+  <Currency>
+    <Type>Armourer's Scrap</Type>
     <ChaosValue>0.06</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
     <Type>Orb of Augmentation</Type>
-    <ChaosValue>0.04</ChaosValue>
-    <Quantity>0</Quantity>
-    <TypeTotal>0.00</TypeTotal>
-  </Currency>
-  <Currency>
-    <Type>Orb of Transmutation</Type>
     <ChaosValue>0.04</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
@@ -277,8 +277,8 @@
     <TypeTotal>0.00</TypeTotal>
   </Currency>
   <Currency>
-    <Type>Armourer's Scrap</Type>
-    <ChaosValue>0.03</ChaosValue>
+    <Type>Orb of Transmutation</Type>
+    <ChaosValue>0.02</ChaosValue>
     <Quantity>0</Quantity>
     <TypeTotal>0.00</TypeTotal>
   </Currency>

@@ -33,15 +33,19 @@ namespace POT.GUI
             poeLeagues = await poeConnect.RunAsyncLeagues();
             leagues.setLeagues(poeLeagues);
             league = Properties.Settings.Default.lastLeague;
+            Console.WriteLine(Properties.Settings.Default.lastLeague);
+            // Assigning data source changes the index, and the function that is run afterwards
+            // assigns the currently selected value to the variable league, nullifying the settings.lastLeague
+            // Because of this the handler is added after the data source, instead of being added in the designer
             leaguesBox.DataSource = leagues.getLeagues();
+            this.leaguesBox.SelectedIndexChanged += new System.EventHandler(this.leaguesBox_SelectedIndexChangedAsync);
+
             // if saved league is no longer available, sets it to standard
             if (!leagues.IsLeagueAvailable(league))
             {
                 league = "Standard";
             }
             leaguesBox.SelectedIndex = leaguesBox.Items.IndexOf(league);
-
-
 
             //Loads data into bank from xml if exists
             if (File.Exists("CurrencyData.xml"))
@@ -75,6 +79,7 @@ namespace POT.GUI
             {
                 potDataSet1.WriteXml("CurrencyData.xml");
                 Properties.Settings.Default.lastLeague = leaguesBox.SelectedItem.ToString();
+                Console.WriteLine(Properties.Settings.Default.lastLeague);
                 Properties.Settings.Default.Save();
             }
         }
@@ -83,12 +88,15 @@ namespace POT.GUI
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             potDataSet1.WriteXml("CurrencyData.xml");
+            Properties.Settings.Default.lastLeague = leaguesBox.SelectedItem.ToString();
+            Properties.Settings.Default.Save();
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             //Updates total when cells are edited
-            totalTxtBox.Text = bank.GetTotal();
+            Console.WriteLine(bank.GetTotal());
+            totalTxtBox.Text = bank.GetTotal(); 
         }
 
         //Data->Reset button click event handler

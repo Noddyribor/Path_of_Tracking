@@ -62,7 +62,6 @@ namespace POT.Logic
             CurrencyOverview currency = new CurrencyOverview();
             league = Uri.EscapeDataString(league);
             string chosenLeague = "api/data/currencyoverview?league=" + league + "&type=Currency";
-            Console.WriteLine(chosenLeague);
             try
             {
                 currency = await GetProductAsync(chosenLeague);

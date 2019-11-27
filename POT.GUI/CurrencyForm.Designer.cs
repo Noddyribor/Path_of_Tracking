@@ -205,16 +205,15 @@
             // 
             // leaguesBox
             // 
-            this.leaguesBox.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", global::POT.GUI.Properties.Settings.Default, "lastLeague", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.leaguesBox.DisplayMember = "Standard";
+            //this.leaguesBox.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", global::POT.GUI.Properties.Settings.Default, "lastLeague", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            //this.leaguesBox.DisplayMember = "Standard";
             this.leaguesBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.leaguesBox.FormattingEnabled = true;
             this.leaguesBox.Location = new System.Drawing.Point(746, 164);
             this.leaguesBox.Name = "leaguesBox";
             this.leaguesBox.Size = new System.Drawing.Size(109, 21);
-            this.leaguesBox.TabIndex = 8;
-            this.leaguesBox.ValueMember = global::POT.GUI.Properties.Settings.Default.lastLeague;
-            this.leaguesBox.SelectedIndexChanged += new System.EventHandler(this.leaguesBox_SelectedIndexChangedAsync);
+            this.leaguesBox.TabIndex = 0;
+            //this.leaguesBox.ValueMember = global::POT.GUI.Properties.Settings.Default.lastLeague;
             // 
             // currencyForm
             // 

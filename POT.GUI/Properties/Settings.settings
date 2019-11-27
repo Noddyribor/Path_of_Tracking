@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="POT.GUI.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="lastLeague" Type="System.String" Scope="User">
+    <Setting Name="lastLeague" Roaming="true" GenerateDefaultValueInCode="false" Type="System.String" Scope="User">
       <Value Profile="(Default)">Standard</Value>
     </Setting>
   </Settings>

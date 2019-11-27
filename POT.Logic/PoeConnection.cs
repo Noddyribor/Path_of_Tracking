@@ -25,7 +25,6 @@ namespace POT.Logic
             if (response.IsSuccessStatusCode)
             {
                 string res = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(res);
                 list = JsonConvert.DeserializeObject<List<PoeLeague>>(res);
             }
             return list;
