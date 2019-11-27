@@ -38,14 +38,26 @@ namespace POT.GUI
             // assigns the currently selected value to the variable league, nullifying the settings.lastLeague
             // Because of this the handler is added after the data source, instead of being added in the designer
             leaguesBox.DataSource = leagues.getLeagues();
-            this.leaguesBox.SelectedIndexChanged += new System.EventHandler(this.leaguesBox_SelectedIndexChangedAsync);
+            
 
             // if saved league is no longer available, sets it to standard
             if (!leagues.IsLeagueAvailable(league))
             {
                 league = "Standard";
+                this.leaguesBox.SelectedIndexChanged += new EventHandler(this.leaguesBox_SelectedIndexChangedAsync);
             }
-            leaguesBox.SelectedIndex = leaguesBox.Items.IndexOf(league);
+            //Current workaround to not lose quantity data when getting league data because of the event
+            else if(!File.Exists("CurrencyData.xml"))
+            {
+                this.leaguesBox.SelectedIndexChanged += new EventHandler(this.leaguesBox_SelectedIndexChangedAsync);
+                leaguesBox.SelectedIndex = leaguesBox.Items.IndexOf(league);
+            }
+            else
+            {
+                leaguesBox.SelectedIndex = leaguesBox.Items.IndexOf(league);
+                this.leaguesBox.SelectedIndexChanged += new EventHandler(this.leaguesBox_SelectedIndexChangedAsync);
+            }
+            
 
             //Loads data into bank from xml if exists
             if (File.Exists("CurrencyData.xml"))
@@ -63,6 +75,7 @@ namespace POT.GUI
                 bank = new CurrencyBank(ninjaCurrency.lines);
                 potDataSet1.Clear();
                 potDataSet1.Merge(bank.GetPOTDataSet());
+                bank.SetPOTDataSet(potDataSet1);
             }
 
             totalTxtBox.Text = bank.GetTotal();
@@ -103,7 +116,6 @@ namespace POT.GUI
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bank.ResetQuantity();
-            potDataSet1.Clear();
             potDataSet1.Merge(bank.GetPOTDataSet());
             totalTxtBox.Text = bank.GetTotal();
             dataGridView1.Refresh();
@@ -120,8 +132,6 @@ namespace POT.GUI
             {
                 //gets up-to-date values from poe.ninja
                 await bank.UpdateChaosValues(league);
-                potDataSet1.Clear();
-                potDataSet1.Merge(bank.GetPOTDataSet());
                 totalTxtBox.Text = bank.GetTotal();
                 dataGridView1.Refresh();
                 msgTxtBox.Text = "Getting data from poe.ninja... Success!";
@@ -132,6 +142,7 @@ namespace POT.GUI
                 Console.WriteLine(ex.Message);
             }
             sleep.BeginInvoke(clear, null);
+            bank.SetPOTDataSet(potDataSet1);
         }
 
         //league change event handler
@@ -160,6 +171,7 @@ namespace POT.GUI
                 Console.WriteLine(ex.Message);
             }
             sleep.BeginInvoke(clear, null);
+            bank.SetPOTDataSet(potDataSet1);
         }
     }
 }
