@@ -33,7 +33,6 @@ namespace POT.GUI
             poeLeagues = await poeConnect.RunAsyncLeagues();
             leagues.setLeagues(poeLeagues);
             league = Properties.Settings.Default.lastLeague;
-            Console.WriteLine(Properties.Settings.Default.lastLeague);
             // Assigning data source changes the index, and the function that is run afterwards
             // assigns the currently selected value to the variable league, nullifying the settings.lastLeague
             // Because of this the handler is added after the data source, instead of being added in the designer
@@ -47,7 +46,7 @@ namespace POT.GUI
                 this.leaguesBox.SelectedIndexChanged += new EventHandler(this.leaguesBox_SelectedIndexChangedAsync);
             }
             //Current workaround to not lose quantity data when getting league data because of the event
-            else if(!File.Exists("CurrencyData.xml"))
+            else if(!File.Exists(league + "CurrencyData.xml"))
             {
                 this.leaguesBox.SelectedIndexChanged += new EventHandler(this.leaguesBox_SelectedIndexChangedAsync);
                 leaguesBox.SelectedIndex = leaguesBox.Items.IndexOf(league);
@@ -60,9 +59,9 @@ namespace POT.GUI
             
 
             //Loads data into bank from xml if exists
-            if (File.Exists("CurrencyData.xml"))
+            if (File.Exists(league + "CurrencyData.xml"))
             {
-                potDataSet1.ReadXml("CurrencyData.xml");
+                potDataSet1.ReadXml(league + "CurrencyData.xml");
                 bank = new CurrencyBank();
                 bank.SetPOTDataSet(potDataSet1);
             }
@@ -90,9 +89,8 @@ namespace POT.GUI
             //Saves the xml and league setting before closing if the user wants to
             if(confirmExitForm.ShowDialog() == DialogResult.Yes)
             {
-                potDataSet1.WriteXml("CurrencyData.xml");
+                potDataSet1.WriteXml(league + "CurrencyData.xml");
                 Properties.Settings.Default.lastLeague = leaguesBox.SelectedItem.ToString();
-                Console.WriteLine(Properties.Settings.Default.lastLeague);
                 Properties.Settings.Default.Save();
             }
         }
@@ -100,7 +98,7 @@ namespace POT.GUI
         //Data->Save button click event handler
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            potDataSet1.WriteXml("CurrencyData.xml");
+            potDataSet1.WriteXml(league + "CurrencyData.xml");
             Properties.Settings.Default.lastLeague = leaguesBox.SelectedItem.ToString();
             Properties.Settings.Default.Save();
         }
@@ -108,7 +106,6 @@ namespace POT.GUI
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             //Updates total when cells are edited
-            Console.WriteLine(bank.GetTotal());
             totalTxtBox.Text = bank.GetTotal(); 
         }
 
@@ -148,30 +145,45 @@ namespace POT.GUI
         //league change event handler
         private async void leaguesBox_SelectedIndexChangedAsync(object sender, EventArgs e)
         {
-            //get data for the selected league
-            Action sleep = delegate () { Thread.Sleep(3000); };
-            Action msg = delegate () { msgTxtBox.Text = ""; };
-            AsyncCallback clear = delegate (IAsyncResult ar) { msgTxtBox.Invoke(msg); sleep.EndInvoke(ar); };
-            msgTxtBox.Text = "Getting data from poe.ninja...";
-            try
+            // saving xml if league changed, to prevent user quantity data
+            potDataSet1.WriteXml(league + "CurrencyData.xml");
+
+            league = leaguesBox.Text;
+            // if a save file for the league exists, loads that instead of ninja data
+            if (File.Exists(league + "CurrencyData.xml"))
             {
-                league = leaguesBox.Text;
-                CurrencyOverview ninjaCurrency;
-                NinjaConnection ninjaConnect = new NinjaConnection();
-                ninjaCurrency = await ninjaConnect.RunAsync(league);
-                bank = new CurrencyBank(ninjaCurrency.lines);
                 potDataSet1.Clear();
-                potDataSet1.Merge(bank.GetPOTDataSet());
-                totalTxtBox.Text = bank.GetTotal();
-                dataGridView1.Refresh();
-                msgTxtBox.Text = "Getting data from poe.ninja... Success!";
+                potDataSet1.ReadXml(league + "CurrencyData.xml");
+                bank = new CurrencyBank();
+                bank.SetPOTDataSet(potDataSet1);
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine(ex.Message);
+                //get data for the selected league
+                Action sleep = delegate () { Thread.Sleep(3000); };
+                Action msg = delegate () { msgTxtBox.Text = ""; };
+                AsyncCallback clear = delegate (IAsyncResult ar) { msgTxtBox.Invoke(msg); sleep.EndInvoke(ar); };
+                msgTxtBox.Text = "Getting data from poe.ninja...";
+                try
+                {
+                    
+                    CurrencyOverview ninjaCurrency;
+                    NinjaConnection ninjaConnect = new NinjaConnection();
+                    ninjaCurrency = await ninjaConnect.RunAsync(league);
+                    bank = new CurrencyBank(ninjaCurrency.lines);
+                    potDataSet1.Clear();
+                    potDataSet1.Merge(bank.GetPOTDataSet());
+                    totalTxtBox.Text = bank.GetTotal();
+                    dataGridView1.Refresh();
+                    msgTxtBox.Text = "Getting data from poe.ninja... Success!";
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                sleep.BeginInvoke(clear, null);
+                bank.SetPOTDataSet(potDataSet1);
             }
-            sleep.BeginInvoke(clear, null);
-            bank.SetPOTDataSet(potDataSet1);
         }
     }
 }

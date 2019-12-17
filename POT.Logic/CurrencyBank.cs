@@ -100,7 +100,6 @@ namespace POT.Logic
             foreach (POTDataSet.CurrencyRow curr in rows)
             {
                 total += curr.Quantity * curr.ChaosValue;
-                Console.WriteLine(curr.Quantity);
             }
             if(total < exaltedRow.ChaosValue)
             {
